@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado del análisis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #add8e6; /* Color azul celeste */
+        }
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            background-color: #ffffff; /* Fondo blanco para el contenedor */
+            padding: 20px; /* Espaciado interior para el contenedor */
+            border-radius: 10px; /* Bordes redondeados para el contenedor */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave para el contenedor */
+        }
+        h1 {
+            text-align: center;
+        }
+        .code {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .token-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .token {
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            padding: 5px;
+            margin-bottom: 5px;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado del análisis</h1>
+        <div class="code">
+            <p><strong>Código ingresado:</strong></p>
+            <pre>{{ codigo }}</pre>
+        </div>
+        <div class="token-list">
+            <p><strong>Tokens encontrados:</strong></p>
+            <ul>
+                {% for token, tipo in tokens %}
+                    <li class="token">{{ token }}: {{ tipo }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if errores_sintacticos %}
+            <div class="error">
+                <p><strong>Errores sintácticos:</strong></p>
+                <ul>
+                    {% for error in errores_sintacticos %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
